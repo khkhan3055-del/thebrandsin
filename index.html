@@ -1,92 +1,96 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="The Brands In is coming soon.">
-  <meta name="theme-color" content="#182722">
-  <title>The Brands In — Coming Soon</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: clamp(12px, 3vw, 40px);
-      background: #182722;
-      color: #f7f1df;
-      font: 1rem/1.5 system-ui, sans-serif;
-    }
-    .frame {
-      min-height: calc(100vh - 2 * clamp(12px, 3vw, 40px));
-      min-height: calc(100svh - 2 * clamp(12px, 3vw, 40px));
-      display: grid;
-      grid-template-rows: auto 1fr;
-      border: 1px solid #748475;
-      background: radial-gradient(ellipse at 75% 90%, #344937, transparent 70%);
-      padding: clamp(20px, 5vw, 72px);
-    }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      font-size: .875rem;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    .mark {
-      display: grid;
-      place-items: center;
-      width: 42px;
-      height: 42px;
-      border: 1px solid #d9e5aa;
-      border-radius: 50%;
-      color: #d9e5aa;
-      font: italic 1.2rem Georgia, serif;
-      letter-spacing: -.06em;
-      text-transform: none;
-    }
-    main {
-      display: grid;
-      align-content: center;
-      justify-items: center;
-      text-align: center;
-      padding-block: clamp(56px, 10vh, 120px);
-    }
-    .ornament {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: #d9e5aa;
-    }
-    .ornament::before, .ornament::after {
-      content: "";
-      width: clamp(25px, 6vw, 80px);
-      height: 1px;
-      background: currentColor;
-    }
-    h1 {
-      margin: .18em 0 .24em;
-      font: 400 clamp(3.25rem, 12vw, 11rem)/.9 Georgia, serif;
-      letter-spacing: -.065em;
-    }
-    h1 em { color: #d9e5aa; }
-    p { margin: 0; max-width: 34ch; color: #e3e5d6; }
-    @media (max-width: 580px) {
-      h1 em { display: block; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#081321">
+<title>The Brands Inn — Coming Soon</title>
+<style>
+  * { box-sizing: border-box; }
+  :root { color-scheme: dark; --gold: #ffda99; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding-inline: clamp(20px, 6vw, 100px);
+    background: #081321;
+    color: #fff9ee;
+    font: 1rem/1.5 system-ui, sans-serif;
+  }
+  .backdrop, .backdrop img, .backdrop::after { position: fixed; inset: 0; }
+  .backdrop { z-index: -1; overflow: hidden; }
+  .backdrop img { width: 100%; height: 100%; object-fit: cover; }
+  .backdrop::after {
+    content: "";
+    background: linear-gradient(90deg, #060e1ae8, #060e1a75),
+                linear-gradient(0deg, #060e1ae0, transparent 36%);
+  }
+  .architecture { opacity: 0; animation: crossfade 28s ease-in-out infinite; }
+  @keyframes crossfade {
+    0%, 40%, 100% { opacity: 0; }
+    50%, 90% { opacity: 1; }
+  }
+  .paused .architecture { animation-play-state: paused; }
+  header, footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  header { padding-block: 24px; border-bottom: 1px solid #fff4; }
+  .wordmark { font: 1.2rem Georgia, serif; }
+  .wordmark strong { color: var(--gold); }
+  .status, label { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
+  .status { color: var(--gold); }
+  main { align-self: center; padding-block: clamp(42px, 9vh, 100px); }
+  h1 { margin: 0 0 36px; font: 400 clamp(2.35rem, 7.4vw, 8rem)/1.03 Georgia, serif; letter-spacing: -.05em; }
+  h1 span { display: block; color: var(--gold); font-style: italic; }
+  .progress { width: min(100%, 390px); }
+  .progress-heading { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .progress-heading strong { color: var(--gold); font-size: 1.35rem; }
+  progress { appearance: none; display: block; width: 100%; height: 7px; border: 0; border-radius: 20px; overflow: hidden; background: #fff4; color: var(--gold); }
+  progress::-webkit-progress-bar { background: transparent; }
+  progress::-webkit-progress-value { background: var(--gold); border-radius: 20px; }
+  progress::-moz-progress-bar { background: var(--gold); border-radius: 20px; }
+  .thanks { display: flex; align-items: center; gap: 12px; margin: 28px 0 0; }
+  .smile { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #ffda9980; border-radius: 50%; color: var(--gold); font-size: 1.5rem; }
+  footer { flex-wrap: wrap; padding-block: 15px; border-top: 1px solid #fff4; color: #e5e9ef; font-size: .8rem; }
+  button { min-height: 44px; padding: 0 12px; background: #081321b3; border: 1px solid #fff5; border-radius: 4px; color: inherit; font: inherit; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    .architecture { animation: none; }
+    #slideshow { display: none; }
+  }
+</style>
 </head>
 <body>
-  <div class="frame">
-    <header>
-      <span class="mark" aria-hidden="true">In</span>
-      The Brands In
-    </header>
-    <main>
-      <span class="ornament" aria-hidden="true">✦</span>
-      <h1>Coming <em>soon</em></h1>
-      <p>We’re getting the site ready. Check back for our launch.</p>
-    </main>
+  <div class="backdrop" aria-hidden="true">
+    <img src="earth.jpg" alt="" fetchpriority="high">
+    <img class="architecture" src="architecture.jpg" alt="">
   </div>
+  <header>
+    <div class="wordmark">The Brands <strong>Inn</strong></div>
+    <span class="status">Coming soon</span>
+  </header>
+  <main>
+    <h1>Creating BrandsInn <span>for Brands Worldwide</span></h1>
+    <div class="progress">
+      <div class="progress-heading">
+        <label for="launch-progress">Launch progress</label>
+        <strong aria-hidden="true">30%</strong>
+      </div>
+      <progress id="launch-progress" value="30" max="100">30%</progress>
+    </div>
+    <p class="thanks"><span class="smile" aria-hidden="true">☺</span> Thank you for visiting us.</p>
+  </main>
+  <footer>
+    <span>© The Brands Inn. All rights reserved.</span>
+    <button id="slideshow" type="button" hidden>Pause slideshow</button>
+  </footer>
+  <script>
+    const slideshow = document.querySelector('#slideshow');
+    slideshow.hidden = false;
+    slideshow.addEventListener('click', () => {
+      const paused = document.body.classList.toggle('paused');
+      slideshow.textContent = paused ? 'Resume slideshow' : 'Pause slideshow';
+    });
+  </script>
 </body>
 </html>
