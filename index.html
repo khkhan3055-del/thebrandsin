@@ -7,53 +7,74 @@
 <title>The Brands Inn — Coming Soon</title>
 <style>
   * { box-sizing: border-box; }
-  :root { color-scheme: dark; --gold: #ffda99; }
   body {
     margin: 0;
     min-height: 100vh;
     min-height: 100svh;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    padding-inline: clamp(20px, 6vw, 100px);
-    background: #081321;
-    color: #fff9ee;
-    font: 1rem/1.5 system-ui, sans-serif;
+    grid-template-rows: 1fr auto;
+    background: #101820;
+    color: #202020;
+    font: 1rem/1.5 "Century Gothic", "Avenir Next", Futura, sans-serif;
   }
   .backdrop, .backdrop img, .backdrop::after { position: fixed; inset: 0; }
-  .backdrop { z-index: -1; overflow: hidden; }
+  .backdrop { z-index: -1; }
   .backdrop img { width: 100%; height: 100%; object-fit: cover; }
-  .backdrop::after {
-    content: "";
-    background: linear-gradient(90deg, #060e1ae8, #060e1a75),
-                linear-gradient(0deg, #060e1ae0, transparent 36%);
-  }
+  .backdrop::after { content: ""; background: #10182080; }
   .architecture { opacity: 0; animation: crossfade 28s ease-in-out infinite; }
   @keyframes crossfade {
     0%, 40%, 100% { opacity: 0; }
     50%, 90% { opacity: 1; }
   }
   .paused .architecture { animation-play-state: paused; }
-  header, footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
-  header { padding-block: 24px; border-bottom: 1px solid #fff4; }
-  .wordmark { font: 1.2rem Georgia, serif; }
-  .wordmark strong { color: var(--gold); }
-  .status, label { font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; }
-  .status { color: var(--gold); }
-  main { align-self: center; padding-block: clamp(42px, 9vh, 100px); }
-  h1 { margin: 0 0 36px; font: 400 clamp(2.35rem, 7.4vw, 8rem)/1.03 Georgia, serif; letter-spacing: -.05em; }
-  h1 span { display: block; color: var(--gold); font-style: italic; }
-  .progress { width: min(100%, 390px); }
-  .progress-heading { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
-  .progress-heading strong { color: var(--gold); font-size: 1.35rem; }
-  progress { appearance: none; display: block; width: 100%; height: 7px; border: 0; border-radius: 20px; overflow: hidden; background: #fff4; color: var(--gold); }
+  main {
+    place-self: center;
+    width: min(650px, calc(100% - 32px));
+    margin-block: 24px;
+    padding: clamp(24px, 6vw, 58px);
+    background: #fcfcfc;
+    text-align: center;
+  }
+  .logo {
+    position: relative;
+    overflow: hidden;
+    width: min(100%, 350px);
+    aspect-ratio: 3 / 1;
+    margin: 0 auto 30px;
+  }
+  .logo img {
+    position: absolute;
+    width: 138%;
+    height: auto;
+    top: -145%;
+    left: -28%;
+  }
+  .status, label { font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; }
+  .status { margin: 0; }
+  h1 { margin: 10px 0 26px; font-size: clamp(1.55rem, 5vw, 2.7rem); line-height: 1.15; }
+  h1 span { display: block; }
+  .progress { width: min(100%, 300px); margin-inline: auto; }
+  .progress-heading { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+  progress { appearance: none; display: block; width: 100%; height: 6px; border: 0; border-radius: 6px; overflow: hidden; background: #ddd; }
   progress::-webkit-progress-bar { background: transparent; }
-  progress::-webkit-progress-value { background: var(--gold); border-radius: 20px; }
-  progress::-moz-progress-bar { background: var(--gold); border-radius: 20px; }
-  .thanks { display: flex; align-items: center; gap: 12px; margin: 28px 0 0; }
-  .smile { display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #ffda9980; border-radius: 50%; color: var(--gold); font-size: 1.5rem; }
-  footer { flex-wrap: wrap; padding-block: 15px; border-top: 1px solid #fff4; color: #e5e9ef; font-size: .8rem; }
-  button { min-height: 44px; padding: 0 12px; background: #081321b3; border: 1px solid #fff5; border-radius: 4px; color: inherit; font: inherit; cursor: pointer; }
-  button:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  progress::-webkit-progress-value { background: #202020; }
+  progress::-moz-progress-bar { background: #202020; }
+  .thanks { margin: 24px 0 0; }
+  .smile { margin-right: 6px; font-size: 1.3em; }
+  footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px 20px;
+    padding: 12px 16px;
+    background: #101820;
+    color: #fff;
+    font-size: .8rem;
+    text-align: center;
+  }
+  button { min-height: 44px; padding: 0 12px; background: transparent; border: 1px solid #fff8; color: inherit; font: inherit; cursor: pointer; }
+  button:focus-visible { outline: 2px solid white; outline-offset: 3px; }
   @media (prefers-reduced-motion: reduce) {
     .architecture { animation: none; }
     #slideshow { display: none; }
@@ -65,11 +86,9 @@
     <img src="earth.jpg" alt="" fetchpriority="high">
     <img class="architecture" src="architecture.jpg" alt="">
   </div>
-  <header>
-    <div class="wordmark">The Brands <strong>Inn</strong></div>
-    <span class="status">Coming soon</span>
-  </header>
   <main>
+    <div class="logo"><img src="brands-inn.png" alt="The Brands Inn — The global brands directory" width="2000" height="2000"></div>
+    <p class="status">Coming soon</p>
     <h1>Creating BrandsInn <span>for Brands Worldwide</span></h1>
     <div class="progress">
       <div class="progress-heading">
